@@ -5,7 +5,7 @@ import json
 
 # Je commence par déclarer ma fonction Password
 def Password():
-    # Vérifie si le mot de passe est valide ou non, tant que le mot de passe est invalide, alors la boucle va se répéter...
+    # Vérifie tant que le mot de passe est invalide, alors la boucle va se répéter...
     while True:
         # Je demande à l'utilisateur d'entrer son mot de passe
         get_password = input("Veuillez entrer votre mot de passe :")
@@ -45,7 +45,7 @@ def Password():
             if uppercase and lowercase and numbers and special_chars:
                 print("Votre mot de passe est correct")
                 return get_password
-            else:
+            else: #Sinon affiche un message d'erreur
                 print("Votre mot de passe est incorrect")
 
         else: # Sinon le mot de passe est trop court
@@ -57,12 +57,15 @@ user_password = Password()
 # Déclaration de la fonction de cryptage
 def cryptage(get_password):
     # Je vais utiliser un algortihme de hashage nommé SHA-256
-    # encode() va convertir une string en bytes afin qu'elle puisse être accepté par hashlib.sha() 
+    # encode() va convertir une string en bytes afin qu'elle puisse être accepté par hashlib.sha()
+
     hash = hashlib.sha256(get_password.encode('UTF-8')) 
-    # hexdigest va convertir les bytes en une chaîne hexadécimale
+    # Puis la méthode hexdigest va convertir les bytes en une chaîne hexadécimale
     encrypted_password = hash.hexdigest()
-    print(encrypted_password)
-cryptage(user_password)
+
+    print(encrypted_password) #Enfin affiche moi le mot de passe encrypté
+
+cryptage(user_password) #Enfin J'éxecute ma fonction cryptage qui se charge d'encrypter le mot de passe
             
             
 
